@@ -1,0 +1,13 @@
+.env*
+*tfstate*
+*tfvars
+*tfvars.json
+*.p12
+*.crt
+.terraform*
+*.save
+*.json
+.kubeconfig
+*.cfg
+ves_system*yaml
+manifest/*yaml
