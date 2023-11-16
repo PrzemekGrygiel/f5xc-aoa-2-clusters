@@ -21,9 +21,9 @@ resource "terraform_data" "worker" {
   count      = var.worker_nodes_count
   depends_on = [ local_file.kubectl_manifest_worker ]
   input      = {
-    manifest   = "manifest/${var.f5xc_cluster_name}_m${count.index}.yaml"
+    manifest   = "manifest/${var.f5xc_cluster_name}_w${count.index}.yaml"
     kubeconfig = var.f5xc_kubeconfig
-    node       = "${var.f5xc_cluster_name}-w${count.index}"
+    name       = "${var.f5xc_cluster_name}-w${count.index}"
   }
 
   provisioner "local-exec" {
