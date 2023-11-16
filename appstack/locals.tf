@@ -8,5 +8,5 @@ locals {
     "Owner"                                          = var.owner_tag
     "deployment"                                     = var.f5xc_cluster_name
   }
-  kubeconfig = format("../%s.kubeconfig", var.f5xc_cluster_name)
+  kubeconfig = format("./%s.kubeconfig", var.f5xc_cluster_name)
 }

@@ -7,7 +7,8 @@
 .terraform*
 *.save
 *.json
-.kubeconfig
+*.kubeconfig
 *.cfg
 ves_system*yaml
 manifest/*yaml
+

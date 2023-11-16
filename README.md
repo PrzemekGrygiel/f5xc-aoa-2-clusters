@@ -22,6 +22,13 @@ terraform apply
 Verify cluster with
 
 ```
-$ ./cluster_info.sh
+$ kubectl get nodes --kubeconfig sb-scale-tiny.kubeconfig
+NAME               STATUS   ROLES        AGE   VERSION
+sb-scale-tiny-m0   Ready    ves-master   89m   v1.24.13-ves
 
+$ kubectl get nodes --kubeconfig sb-scale-small.kubeconfig 
+NAME                STATUS   ROLES        AGE   VERSION
+sb-scale-small-m0   Ready    ves-master   69m   v1.24.13-ves
+sb-scale-small-m1   Ready    ves-master   68m   v1.24.13-ves
+sb-scale-small-m2   Ready    ves-master   69m   v1.24.13-ves
 ```
