@@ -9,7 +9,7 @@ and number of desired master (1 or 3) and worker nodes (0..128).
 
 ## Prerequisites
 
-- RHEL9 kubevirt docker container with RHEL9 CE qcow2 image. See (kubevirt-rhel9-image)[kubevirt-rhel9-image] for build instructions.
+- RHEL9 kubevirt docker container with RHEL9 CE qcow2 image. See [kubevirt-rhel9-image](kubevirt-rhel9-image) for build instructions.
 
 ## Deployment
 
