@@ -2,7 +2,7 @@ project_prefix       = "prefix"
 owner                = "user@email.com
 
 f5xc_kubeconfig      = "ves_system_clustername_kubeconfig_global.yaml"
-f5xc_rhel9_container = "........................."
+f5xc_rhel9_container = "marcelwiget/vesio-ver9-ce"
 ssh_public_key_file  = "<ssh-public-key-file>"
 
 f5xc_api_url      = "https://tenant.console.ves.volterra.io/api"
