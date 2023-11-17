@@ -11,4 +11,4 @@
 *.cfg
 ves_system*yaml
 manifest/*yaml
-
+*.qcow2
