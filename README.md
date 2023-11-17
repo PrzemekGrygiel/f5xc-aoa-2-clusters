@@ -32,7 +32,7 @@ sb-scale-small-m0   Ready    ves-master   69m   v1.24.13-ves
 sb-scale-small-m1   Ready    ves-master   68m   v1.24.13-ves
 sb-scale-small-m2   Ready    ves-master   69m   v1.24.13-ves
 
-$ k get nodes --kubeconfig sb-scale-large.kubeconfig 
+$ kubectl get nodes --kubeconfig sb-scale-large.kubeconfig 
 NAME                STATUS   ROLES        AGE   VERSION
 sb-scale-large-m0   Ready    ves-master   19h   v1.24.13-ves
 sb-scale-large-m1   Ready    ves-master   19h   v1.24.13-ves
