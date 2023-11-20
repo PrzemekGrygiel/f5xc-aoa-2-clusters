@@ -1,0 +1,1 @@
+- separate kubectl wait from apply for better error handling if VM can't be deployed 
