@@ -38,8 +38,8 @@ resource "volterra_voltstack_site" "cluster" {
     name      = volterra_k8s_cluster.cluster.name
   }
 
-  master_nodes = [ for k,v in terraform_data.master : format("m%s", k) ]
-  worker_nodes = [ for k,v in terraform_data.worker : format("w%s", k) ]
+  master_nodes = [ for k,v in terraform_data.master : format("%s-m%s", volterra_k8s_cluster.cluster.name, k) ]
+  worker_nodes = [ for k,v in terraform_data.worker : format("%s-w%s", volterra_k8s_cluster.cluster.name, k) ]
 
   no_bond_devices         = true
   disable_gpu             = true
