@@ -94,3 +94,7 @@ variable "f5xc_cluster_labels" {
 
 variable "owner_tag" {}
 variable "is_sensitive" {}
+variable "kubevirt" {
+  type = bool
+  default = false
+}

@@ -43,7 +43,8 @@ resource "volterra_voltstack_site" "cluster" {
 
   no_bond_devices         = true
   disable_gpu             = true
-  enable_vm               = true
+  enable_vm               = var.kubevirt ? true : false
+  disable_vm              = var.kubevirt ? false : true
   logs_streaming_disabled = true
   default_network_config  = true
   default_storage_config  = true

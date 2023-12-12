@@ -1,4 +1,5 @@
 module "tiny" {
+  #count = 0
   source                = "./appstack"
   f5xc_cluster_name     = format("%s-scale-tiny", var.project_prefix)
   master_nodes_count    = 1
@@ -22,5 +23,6 @@ module "tiny" {
   is_sensitive          = false
   f5xc_cluster_latitude = 47.18
   f5xc_cluster_longitude = 8.47
+  kubevirt              = false
 }
 

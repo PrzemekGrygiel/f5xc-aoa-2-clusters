@@ -42,7 +42,7 @@ spec:
       volumes:
         - name: containerdisk
           containerDisk:
-            image: marcelwiget/vesio-ver9-ce
+            image: ${f5xc_rhel9_container}
             #            imagePullPolicy: Always
         - name: cloudinit
           cloudInitNoCloud:
