@@ -33,6 +33,11 @@ spec:
               name: default-net
                 #            - bridge: {}
                 #              name: marcel-vn
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 1.1.1.1
+          - 8.8.8.8
       networks:
       - name: default-net
         pod: {} # Uses default Volterra CNI as for vk8s pods
@@ -79,19 +84,6 @@ spec:
                     MauricePrivateEndpoint: ${maurice-private-endpoint}
                     Proxy: {}
                     Token: ${site-registration-token}
-              - path: /etc/NetworkManager/conf.d/90-dns-none.conf
-                permissions: 0644
-                owner: root
-                content: |
-                  [main]
-                  dns=None
-                  rc-manager=unmanaged
-              - path: /etc/resolv.conf
-                permissions: 0644
-                owner: root
-                content: |
-                  nameserver 1.1.1.1
-                  nameserver 8.8.8.8
               - path: /etc/vpm/certified-hardware.yaml
                 permissions: 0644
                 owner: root
