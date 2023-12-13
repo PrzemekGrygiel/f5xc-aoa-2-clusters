@@ -83,6 +83,7 @@ spec:
                     MauriceEndpoint: ${maurice-endpoint}
                     MauricePrivateEndpoint: ${maurice-private-endpoint}
                     Proxy: {}
+                    EnableIpv6: true
                     Token: ${site-registration-token}
               - path: /etc/vpm/certified-hardware.yaml
                 permissions: 0644
