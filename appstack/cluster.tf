@@ -60,6 +60,7 @@ resource "volterra_registration_approval" "master" {
   hostname     = format("%s-m%d", volterra_voltstack_site.cluster.name, count.index)
   wait_time    = var.f5xc_registration_wait_time
   retry        = var.f5xc_registration_retry
+  tunnel_type  = var.f5xc_tunnel_type
 }
 
 module "site_wait_for_online" {
@@ -81,6 +82,7 @@ resource "volterra_registration_approval" "worker" {
   hostname     = format("%s-w%d", volterra_voltstack_site.cluster.name, count.index)
   wait_time    = var.f5xc_registration_wait_time
   retry        = var.f5xc_registration_retry
+  tunnel_type  = var.f5xc_tunnel_type
 }
 
 resource "time_offset" "exp_time" {

@@ -98,3 +98,9 @@ variable "kubevirt" {
   type = bool
   default = false
 }
+
+variable "f5xc_tunnel_type" {
+  type    = string
+  default = "SITE_TO_SITE_TUNNEL_IPSEC_OR_SSL"
+}
+
