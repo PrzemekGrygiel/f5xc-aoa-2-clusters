@@ -23,6 +23,8 @@ module "small" {
   is_sensitive          = false
   f5xc_cluster_latitude = 47.18
   f5xc_cluster_longitude = 8.47
-  kubevirt              = false
+  kubevirt              = true
+  # f5xc_tunnel_type      = "SITE_TO_SITE_TUNNEL_SSL"
+  # f5xc_http_proxy	      = "http://10.200.2.30:3128"
 }
 

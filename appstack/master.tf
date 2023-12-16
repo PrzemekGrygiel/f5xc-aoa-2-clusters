@@ -29,6 +29,7 @@ resource "local_file" "kubectl_manifest_master" {
     site-registration-token  = volterra_token.site.id
     certifiedhardware        = "kvm-voltstack-combo"
     f5xc_rhel9_container     = var.f5xc_rhel9_container
+    http-proxy               = var.f5xc_http_proxy
   })
   filename = "manifest/${var.f5xc_cluster_name}_m${count.index}.yaml"
 }

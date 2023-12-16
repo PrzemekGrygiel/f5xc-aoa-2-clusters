@@ -104,3 +104,8 @@ variable "f5xc_tunnel_type" {
   default = "SITE_TO_SITE_TUNNEL_IPSEC_OR_SSL"
 }
 
+variable "f5xc_http_proxy" {
+  type    = string
+  default = ""
+}
+

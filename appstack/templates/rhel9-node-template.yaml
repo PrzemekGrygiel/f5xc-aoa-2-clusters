@@ -82,7 +82,9 @@ spec:
                     Longitude: ${longitude}
                     MauriceEndpoint: ${maurice-endpoint}
                     MauricePrivateEndpoint: ${maurice-private-endpoint}
-                    Proxy: {}
+                    Proxy: 
+                      http_proxy: ${http-proxy}
+                      https_proxy: ${http-proxy}
                     EnableIpv6: true
                     Token: ${site-registration-token}
               - path: /etc/vpm/certified-hardware.yaml
