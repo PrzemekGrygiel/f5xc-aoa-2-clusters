@@ -29,6 +29,11 @@ variable "f5xc_namespace" {
   default = "system"
 }
 
+variable "f5xc_namespace_lb" {
+  type    = string
+  default = "sb-ipv6"
+}
+
 variable "f5xc_kubeconfig" {
   type    = string
   default = ""
@@ -68,4 +73,8 @@ variable "f5xc_registration_retry" {
 variable "admin_password" {
   type = string
   default = ""
+}
+variable "domain" {
+  type = string
+  default = "example.com"
 }

@@ -32,6 +32,7 @@ resource "volterra_voltstack_site" "cluster" {
   depends_on  = [ terraform_data.master, terraform_data.worker ]
   name        = var.f5xc_cluster_name
   namespace   = "system"
+  labels      = var.f5xc_cluster_labels
 
   k8s_cluster {
     namespace = "system"

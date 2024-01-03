@@ -1,7 +1,7 @@
-module "tiny" {
+module "site2" {
   # count = 0
   source                = "./appstack"
-  f5xc_cluster_name     = format("%s-scale-tiny", var.project_prefix)
+  f5xc_cluster_name     = format("%s-ipv6-site2", var.project_prefix)
   master_nodes_count    = 1
   worker_nodes_count    = 0
   f5xc_tenant           = var.f5xc_tenant
@@ -13,7 +13,7 @@ module "tiny" {
   f5xc_kubeconfig       = var.f5xc_kubeconfig
   f5xc_rhel9_container  = var.f5xc_rhel9_container
   admin_password        = var.admin_password
-  f5xc_cluster_labels   = { "site-mesh" : format("%s", var.project_prefix) }
+  f5xc_cluster_labels   = { "site-mesh" : format("%s-ipv6-site", var.project_prefix) }
   ssh_public_key        = file(var.ssh_public_key_file)
   master_node_cpus      = 4
   worker_node_cpus      = 4

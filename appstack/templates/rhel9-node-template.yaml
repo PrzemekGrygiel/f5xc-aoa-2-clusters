@@ -40,10 +40,9 @@ spec:
           - 8.8.8.8
       networks:
       - name: default-net
-        pod: {} # Uses default Volterra CNI as for vk8s pods
-          #      - name: marcel-vn
-          #        multus: # Secondary multus network
-          #          networkName: ves-system/marcel-vn-internet
+        multus: # Secondary multus network
+          networkName: ves-system/sb-bond0-sub-vlan251
+      
       volumes:
         - name: containerdisk
           containerDisk:

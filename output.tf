@@ -1,9 +1,8 @@
 
 output "clusters" {
   value = {
-    tiny = module.tiny
-    small = module.small
-    large = module.large
+    site1 = module.site1
+    site2 = module.site2
   }
   sensitive = true
 }

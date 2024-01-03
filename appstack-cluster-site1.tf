@@ -1,9 +1,9 @@
-module "large" {
-  count = 0
+module "site1" {
+  # count = 0
   source                = "./appstack"
-  f5xc_cluster_name     = format("%s-scale-large", var.project_prefix)
-  master_nodes_count    = 3
-  worker_nodes_count    = 9
+  f5xc_cluster_name     = format("%s-ipv6-site1", var.project_prefix)
+  master_nodes_count    = 1
+  worker_nodes_count    = 0
   f5xc_tenant           = var.f5xc_tenant
   f5xc_api_url          = var.f5xc_api_url
   f5xc_namespace        = var.f5xc_namespace
@@ -13,7 +13,7 @@ module "large" {
   f5xc_kubeconfig       = var.f5xc_kubeconfig
   f5xc_rhel9_container  = var.f5xc_rhel9_container
   admin_password        = var.admin_password
-  f5xc_cluster_labels   = { "site-mesh" : format("%s", var.project_prefix) }
+  f5xc_cluster_labels   = { "site-mesh" : format("%s-ipv6-site", var.project_prefix) }
   ssh_public_key        = file(var.ssh_public_key_file)
   master_node_cpus      = 4
   worker_node_cpus      = 4
@@ -23,8 +23,8 @@ module "large" {
   is_sensitive          = false
   f5xc_cluster_latitude = 47.18
   f5xc_cluster_longitude = 8.47
-  kubevirt              = false
+  kubevirt              = true
   # f5xc_tunnel_type      = "SITE_TO_SITE_TUNNEL_SSL"
-  # f5xc_http_proxy	      = "http://10.200.2.30:3128"
+  # f5xc_http_proxy       = "http://10.200.2.30:3128"
 }
 
