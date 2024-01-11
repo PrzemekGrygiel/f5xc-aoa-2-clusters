@@ -17,7 +17,7 @@ module "workload_site1" {
 
 resource "time_sleep" "wait_n_seconds" {
   depends_on      = [restapi_object.pool1]
-  create_duration = 30
+  create_duration = "30s"
 }
 
 resource "restapi_object" "lb1" {

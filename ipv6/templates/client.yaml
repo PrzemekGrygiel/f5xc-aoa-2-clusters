@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ipv6-client 
+  labels:
+    app: multus-vlan
+  annotations:
+    ves.io/wingman-injection-mode: disable
+    k8s.v1.cni.cncf.io/networks: '[
+            {
+              "name": "sb-bond0-sub-vlan251",
+              "namespace": "ves-system"
+            }
+    ]'  
+spec:
+  containers:
+  - name: ipv6-client
+    image: public.ecr.aws/docker/library/alpine:latest
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/ash"]
+    args: [ "-c", "apk add dhclient curl; dhclient net1; sleep infinity"]
+    securityContext:
+      privileged: true
+      runAsUser: 0

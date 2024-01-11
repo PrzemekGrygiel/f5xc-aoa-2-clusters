@@ -25,6 +25,6 @@ module "site2" {
   f5xc_cluster_longitude = 8.47
   kubevirt              = true
   # f5xc_tunnel_type      = "SITE_TO_SITE_TUNNEL_SSL"
-  # f5xc_http_proxy       = "http://10.200.2.30:3128"
+  f5xc_http_proxy       = "http://10.200.2.30:3128"
 }
 
