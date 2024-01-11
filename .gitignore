@@ -12,3 +12,4 @@
 ves_system*yaml
 manifest/*yaml
 *.qcow2
+sb-infra-lab.yaml
