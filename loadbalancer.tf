@@ -52,8 +52,8 @@ resource "restapi_object" "lb1" {
                  "namespace": "system",
                  "name": format("%s-ipv6-site1", var.project_prefix)
                },
-               "ip": "10.10.10.10",
-               "ipv6": "2001:cafe::1"
+               "ip": "10.251.251.251",
+               "ipv6": "2001:cafe::1000"
              },
              "port": 80
            }
