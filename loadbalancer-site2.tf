@@ -1,32 +1,32 @@
-module "site_wait_for_online" {
+module "site_wait_for_online2" {
   source         = "./modules/f5xc/status/site"
   f5xc_api_token = var.f5xc_api_token
   f5xc_api_url   = var.f5xc_api_url
   f5xc_namespace = module.namespace.namespace.name
-  f5xc_site_name = format("%s-ipv6-site1", var.project_prefix)
+  f5xc_site_name = format("%s-ipv6-site2", var.project_prefix)
   f5xc_tenant    = var.f5xc_tenant
   is_sensitive   = false
 }  
 
 
-module "workload_site1" {
-  depends_on   = [module.site_wait_for_online]
+module "workload_site2" {
+  depends_on   = [module.site_wait_for_online2]
   source                = "./ipv6"
-  f5xc_kubeconfig       = format("./%s-ipv6-site1.kubeconfig", var.project_prefix)
+  f5xc_kubeconfig       = format("./%s-ipv6-site2.kubeconfig", var.project_prefix)
 }
 
-resource "time_sleep" "wait_n_seconds" {
-  depends_on      = [restapi_object.pool1]
+resource "time_sleep" "wait_n_seconds2" {
+  depends_on      = [restapi_object.pool2]
   create_duration = "30s"
 }
 
-resource "restapi_object" "lb1" {
-  depends_on   = [module.site_wait_for_online, module.workload_site1, time_sleep.wait_n_seconds]
+resource "restapi_object" "lb2" {
+  depends_on   = [module.site_wait_for_online2, module.workload_site2, time_sleep.wait_n_seconds2]
   id_attribute = "metadata/name"
     path         = "/config/namespaces/${module.namespace.namespace.name}/http_loadbalancers"
     data         = jsonencode ({
       "metadata": {
-        "name": format("%s-ipv6-site1-vip", var.project_prefix),
+        "name": format("%s-ipv6-site2-vip", var.project_prefix),
         "namespace": module.namespace.namespace.name,
         "labels": {},
         "annotations": {},
@@ -35,7 +35,7 @@ resource "restapi_object" "lb1" {
       },
       "spec": {
        "domains": [
-         var.domain
+         format("2.%s",var.domain)
        ],
        "http": {
          "dns_volterra_managed": false,
@@ -50,10 +50,10 @@ resource "restapi_object" "lb1" {
                "site": {
                  "tenant": var.f5xc_tenant,
                  "namespace": "system",
-                 "name": format("%s-ipv6-site1", var.project_prefix)
+                 "name": format("%s-ipv6-site2", var.project_prefix)
                },
-               "ip": "10.251.251.251",
-               "ipv6": "2001:cafe::1000"
+               "ip": "10.251.251.102",
+               "ipv6": "2001:cafe::102"
              },
              "port": 80
            }
@@ -64,7 +64,7 @@ resource "restapi_object" "lb1" {
         "pool": {
           "tenant": var.f5xc_tenant,
           "namespace": module.namespace.namespace.name,
-          "name": format("%s-ipv6-site1-pool", var.project_prefix),
+          "name": format("%s-ipv6-site2-pool", var.project_prefix),
           "kind": "origin_pool"
         },
         "weight": 1,
@@ -122,13 +122,13 @@ resource "restapi_object" "lb1" {
 
 
 
-resource "restapi_object" "pool1" {
-  depends_on   = [module.site_wait_for_online, module.workload_site1]
+resource "restapi_object" "pool2" {
+  depends_on   = [module.site_wait_for_online2, module.workload_site2]
   id_attribute = "metadata/name"
     path         = "/config/namespaces/${module.namespace.namespace.name}/origin_pools"
     data         = jsonencode ({
     "metadata": {
-      "name": format("%s-ipv6-site1-pool", var.project_prefix),
+      "name": format("%s-ipv6-site2-pool", var.project_prefix),
       "namespace": module.namespace.namespace.name,
       "labels": {},
       "annotations": {},
@@ -138,12 +138,12 @@ resource "restapi_object" "pool1" {
       "origin_servers": [
         {
           "k8s_service": {
-            "service_name": "nginx-service-1",
+            "service_name": "nginx-service-2.default",
             "site_locator": {
               "site": {
                 "tenant": var.f5xc_tenant,
                 "namespace": "system",
-                "name": format("%s-ipv6-site1", var.project_prefix),
+                "name": format("%s-ipv6-site2", var.project_prefix),
                 "kind": "site"
               }
             },

@@ -1,4 +1,4 @@
-resource "terraform_data" "client" {
+resource "terraform_data" "client-slo" {
   depends_on = [ local_file.kubectl_manifest_client ]
   input      = {
     manifest   = "manifest/client.yaml"

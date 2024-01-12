@@ -18,7 +18,7 @@ spec:
     image: public.ecr.aws/docker/library/alpine:latest
     imagePullPolicy: IfNotPresent
     command: ["/bin/ash"]
-    args: [ "-c", "apk add dhclient curl; dhclient net1; echo 2001:cafe::1000 example.com >> /etc/hosts; echo 10.251.251.251 example.com >> /etc/hosts; sleep infinity"]
+    args: [ "-c", "apk add dhclient curl; dhclient net1; echo 2001:cafe::101 1.example.com >> /etc/hosts; echo 10.251.251.101 1.example.com >> /etc/hosts; echo 2001:cafe::102 2.example.com >> /etc/hosts; echo 10.251.251.102 2.example.com >> /etc/hosts; sleep infinity"]
     securityContext:
       privileged: true
       runAsUser: 0
